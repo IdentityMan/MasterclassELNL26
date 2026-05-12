@@ -23,7 +23,7 @@ The session cookies are the more powerful artefact: they can be replayed in anot
 |---|---|
 | Cloudflare account (free tier) | [dash.cloudflare.com](https://dash.cloudflare.com) — no credit card required |
 | Microsoft 365 test account | A disposable account you control — see note below |
-| Cookie-Editor browser extension | [cookie-editor.com](https://cookie-editor.com/) — Chrome or Edge |
+| Cookie-Editor browser extension | [cookie-editor.com](https://cookie-editor.com/) — Chrome or Edge. In InPrivate/Incognito, extension access is off by default: open the extension details and enable **Allow in InPrivate** (Edge) or **Allow in Incognito** (Chrome). |
 
 <details>
 <summary><strong>About the test account</strong></summary>
@@ -370,6 +370,8 @@ The captured session cookies let you authenticate as the victim in a completely 
 ### Steps
 
 1. Install the **Cookie-Editor** extension in Chrome or Edge: [cookie-editor.com](https://cookie-editor.com/)
+
+    > 💡 **Important** — Cookie-Editor is not visible in InPrivate/Incognito by default. Enable it first in the extension details: **Allow in InPrivate** (Edge) or **Allow in Incognito** (Chrome).
 
 2. Open a **new private window** (a session with no existing Microsoft cookies).
 
