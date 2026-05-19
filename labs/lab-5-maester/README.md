@@ -45,3 +45,5 @@ Invoke-Maester
 1. [**Run Maester**](./step-2-running-maester.md)
 1. [Exploring tests](./step-3-exploring-tests.md) (optional, test reference)
 1. [Custom tests](./step-4-custom-test.md) (optional)
+1. [**Run on GitHub Actions**](./step-5-run-on-github.md)
+1. [Publish to Azure Static Web App](./step-6-publish-report-static-web-app.md)

@@ -81,4 +81,4 @@ Invoke-Maester -Path .\Custom
 
 ## Next
 
-Go to the [next step](#) or [the overview](./README.md#maester-workshop).
+Go to the [next step](./step-5-run-on-github.md) or [the overview](./README.md#maester-workshop).
