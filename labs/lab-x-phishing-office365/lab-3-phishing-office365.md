@@ -1,4 +1,4 @@
-# Lab X — Office 365 Phishing with a Cloudflare Worker (Adversary-in-the-Middle)
+# Lab 3 — Office 365 Phishing with a Cloudflare Worker (Adversary-in-the-Middle)
 
 ## About this lab
 
