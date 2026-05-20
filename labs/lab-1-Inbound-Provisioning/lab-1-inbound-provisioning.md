@@ -11,9 +11,9 @@ In the Microsoft Entra portal, go to Enterprise Apps and click "+ New applicatio
 - API-driven provisioning to Microsoft Entra ID
 - API-driven provisioning to on-premises Active Directory
 
-Click to select "API-driven provisioning to Microsoft Entra ID", give it a descriptive name like "ELNL26 API-driven provisioning to Entra ID" and click Create.
+Click to select "API-driven provisioning to Microsoft Entra ID", give it a descriptive name like "ELNL26 API-driven provisioning to Entra ID" and click **Create**.
 
-After the application is created, under Manage, click on Provisioning. Notice the different selections under "Get started", but we will start by clicking "+ New configuration" at the top. At the blade for "New provisioning configuration", select Create. After the provisioning configuration has been created, notice the Basic information and make a note of these for later:
+After the application is created, under Manage, click on Provisioning. Notice the different selections under "Get started", but we will start by clicking "+ New configuration" at the top. At the blade for "New provisioning configuration", select **Create**. After the provisioning configuration has been created, notice the Basic information and make a note of these for later:
 
 - Service principal object id
 - Job ID
@@ -34,7 +34,7 @@ We will now add some more attributes, click Add New Mapping and add these:
 
 Attribute mappings to create:
 
-| Entra ID Attribute | API Attribute |
+| Entra ID Attribute (Target Attribute) | API Attribute (Source Attribute) |
 | --- | --- |
 | companyName | urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization |
 | employeeOrgData.costCenter | urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter |
@@ -43,7 +43,7 @@ Attribute mappings to create:
 
 Note that when you add or edit mappings, you can also choose between Direct mappings, constants and expression based. 
 
-Remember to click Save to store your new attribute mappings.
+Remember to click **Save** to store your new attribute mappings.
 
 &nbsp;
 
@@ -51,21 +51,21 @@ Remember to click Save to store your new attribute mappings.
 
 You can even customize the schema beyond the default attributes in the API. This is needed to be able to get employee hire dates and leave dates.
 
-Click on "Show advanced options", and the click "Edit attribute list for API". Here you can add or change the list of API attributes. Scroll down, and there is an empty name box. You can define your own Schema, so lets add the 2 following attributes (add as strings even though they are dates), change yourorgnamehere to your companyname, or use elnl26 or something similar:
+Click on "Show advanced options", and the click "Edit attribute list for API". Here you can add or change the list of API attributes. Scroll down, and there is an empty name box. You can define your own Schema, so lets add the 2 following attributes (add as strings even though they are dates), you can change "expertslivenl26" to your own companyname, or keep this value:
 
-- urn:ietf:params:scim:schemas:extension:yourorgnamehere:1.0:User:HireDate
-- urn:ietf:params:scim:schemas:extension:yourorgnamehere:1.0:User:LeaveDate
+- urn:ietf:params:scim:schemas:extension:expertslivenl26:1.0:User:HireDate
+- urn:ietf:params:scim:schemas:extension:expertslivenl26:1.0:User:LeaveDate
 
-Save and Refresh App.
+**Save** and Refresh App.
 
-You can now add more Attribute mappings:
+You can now add additional attributes in the attribute mappings which we just added (this list can be extended to your needs):
 
-| Entra ID Attribute | API Attribute |
+| Entra ID Attribute (Target Attribute) | API Attribute (Source Attribute) |
 | --- | --- |
-| employeeHireDate | urn:ietf:params:scim:schemas:extension:yourorgnamehere:1.0:User:HireDate |
-| employeeLeaveDateTime | urn:ietf:params:scim:schemas:extension:yourorgnamehere:1.0:User:LeaveDate |
+| employeeHireDate | urn:ietf:params:scim:schemas:extension:expertslivenl26:1.0:User:HireDate |
+| employeeLeaveDateTime | urn:ietf:params:scim:schemas:extension:expertslivenl26:1.0:User:LeaveDate |
 
-Remember to click Save to store your new attribute mappings.
+Remember to click **Save** to store your new attribute mappings.
 
 &nbsp;
 
@@ -92,23 +92,23 @@ In Graph Explorer, go to Request Headers, and add the following key-value pair t
 
 Content-Type: application/scim+json
 
-Under Request Body, paste in a minimum SCIM payload from the Resources folder here: [minimum-user.json](../../resources/resource-2-scim-sample-payloads/minimum-user.json). The minimum payload is just enough to provision a new user.
+Under Request Body, paste in a minimum SCIM payload from the Resources folder here: [minimum-user.json](../../resources/resource-1-scim-sample-payloads/minimum-user.json). The minimum payload is just enough to provision a new user.
 
-BulkId is just a unique id for this bulk operation, you can safely use the provided one, or generate a new one. You can also change the externalId or user name if you like.
+BulkId is just a unique id for this bulk operation, you can safely use the provided one, or generate a new one. You can also change the user name if you like.
 
 Click **Run query**, and if successful you should get an HTTP response of 202 - Accepted.
 
-After a few minutes, you can check in the Entra portal if the user has been created. After 5-10 minutes, on the Provisioning App, check the Provisioning Logs, and you should see a successful Create operation. Click the details of the log entry to verify the steps, modified properties and summary. Note that the user action is "create", since the externalId mapped to the employeeId property has not been used from before.
+After a few minutes, you can check in the Entra portal if the user has been created. After 5-10 minutes, on the Provisioning App, check the Provisioning Logs, and you should see a successful Create operation. Click the details of the log entry to verify the steps, modified properties and summary. Note that the user action is "create", since the externalId mapped to the employeeId property has not been used earlier in your directory.
 
 &nbsp;
 
 ## Lab 1.6 - Send full SCIM payload to update a user
 
-Still in Graph Explorer, under Request Body, paste in a full SCIM payload from the Resources folder here: [full-user.json](../../resources/resource-2-scim-sample-payloads/full-user.json). The full payload includes many more mappings, including the custom mappings you created earlier in the lab.
+Still in Graph Explorer, under **Request Body**, paste in a **full SCIM payload** from the Resources folder here: [full-user.json](../../resources/resource-1-scim-sample-payloads/full-user.json). The full payload includes many more mappings, including the custom mappings you created earlier in the lab.
 
 The full user payload also include a Manager reference to set the User's Manager. Please note that to specify a Manager, you will need to either:
 
-1. Include the Manager user object in the SCIM payload, and refer to the externalId as shown in the sample, or..
+1. Include the Manager user object in the SCIM payload and refer to the externalId as shown in the sample, or..
 2. Refer to the externalId of a Manager that has *previously* been provisioned via the same Provisioning API.
 
 Click **Run query**, and if successful you should get an HTTP response of 202 - Accepted.
@@ -117,9 +117,9 @@ Again after a few minutes, check in the Entra portal if the user has updated. Af
 
 &nbsp;
 
-## Lab 1.7 - Check Provisioning Audit Logs via Graph API
+## Lab 1.7 - Check Provisioning Logs via Graph API
 
-When working with Inbound Provisioning you will from time to time need to explore the provisioning audit logs, which also can be done via Graph API.
+When working with Inbound Provisioning you will from time to time need to explore the provisioning logs, which also can be done via Graph API.
 
 The URI to send GET requests for provisioning logs is "https://graph.microsoft.com/v1.0/auditLogs/provisioning/?$filter=jobid eq '(Job-ID)'"
 
@@ -127,7 +127,7 @@ The Job ID is the same as above from setting up the Inbound API-driven provision
 
 You will need to Consent to "ProvisioningLog.Read.All" permission to explore the above provisioning logs (with a Privileged Role Administrator or Global Admin account).
 
-Paste your Job ID to the URI above and Run Query in Graph Explorer, and verify that you can see the same entries as in the Provisioning Logs from the Inbound Provisioning App in Entra ID.
+Paste your Job ID to the URI above and click **Run Query** in Graph Explorer, and verify that you can see the same entries as in the Provisioning Logs from the Inbound Provisioning App in Entra ID.
 
 &nbsp;
 
@@ -155,9 +155,8 @@ Using a Client Credential OAuth2 flow, you can now use this Application Client t
 
 ## Lab 1.9 - Summary & Discussion
 
-To finish the lab, turn to your sideperson and discuss or reflect over the following questions.
+To finish the lab, turn to your sideperson and discuss or reflect over the following questions:
 
 1. What happens if you want to create another user, and submits a user payload object that uses the same externalId matching attribute as an existing user?
 2. What happens if you submit a new user SCIM payload with a new unique externalId, but the username is already in use by another user in Entra ID? 
 3. Why isn't the userPrincipalName submitted in the SCIM payload? How is it determined?
-4. What happens if you want to onboard a user in lifecycle workflows with a 'Generate TAP' step while the user already has sign-ins on their account?
