@@ -140,7 +140,7 @@ If you want to build and integrate your own solutions, you need to create an App
 In this lab exercise we will set up the latter.
 
 1. In Entra ID, under App Registrations, create a "+ New Registration".
-2. Give the App a name like for example "API-driven provisioning to Microsoft Entra ID - ELDK Client"
+2. Give the App a name like for example "API-driven provisioning to Microsoft Entra ID - ELNL Client"
 3. Leave the other settings as default, including Single-Tenant App.
 4. Under API permissions, add the following Microsoft Graph **Application** permissions:
     1. ProvisioningLog.Read.All

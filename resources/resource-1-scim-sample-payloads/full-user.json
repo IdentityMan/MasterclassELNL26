@@ -13,18 +13,18 @@
                     "urn:ietf:params:scim:schemas:extension:contoso:1.0:User"
                 ],
                 "externalId": "106",
-                "userName": "holger.danske",
-                "displayName": "Holger Danske",
+                "userName": "Adele.Vance",
+                "displayName": "Adele Vance",
                 "active": false,
                 "name": {
-                    "familyName": "Danske",
-                    "givenName": "Holger"
+                    "familyName": "Adele",
+                    "givenName": "Vance"
                 },
-                "userType": "Demo",
+                "userType": "Demo Employee",
                 "addresses": [
                     {
-                        "country": "DK",
-                        "formatted": "Denmark",
+                        "country": "NL",
+                        "formatted": "Netherlands",
                         "locality": "",
                         "postalCode": "",
                         "primary": true,
@@ -37,32 +37,32 @@
                     {
                         "primary": true,
                         "type": "work",
-                        "value": "holger.danske@M365x91871532.onmicrosoft.com"
+                        "value": "Adele.Vance@M365x91871532.onmicrosoft.com"
                     }
                 ],
-                "nickName": "holger.danske",
+                "nickName": "Adele.Vance",
                 "phoneNumbers": [
                     {
                         "type": "mobile",
-                        "value": "+45 00000000"
+                        "value": "+31 12345678"
                     }
                 ],
-                "preferredLanguage": "dk-DK",
-                "timezone": "Copenhagen/Denmark",
+                "preferredLanguage": "nl-NL",
+                "timezone": "Amsterdam/Netherlands",
                 "title": "Consultant",
                 "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
-                    "costCenter": "ELDK",
-                    "department": "ELDK 2026",
-                    "division": "Experts Live Denmark",
+                    "costCenter": "ELNL",
+                    "department": "ELNL 2026",
+                    "division": "Experts Live Netherlands 2026",
                     "organization": "Experts Live",
                     "manager": {
                         "value": "100"
                     }
                 },
-                "urn:ietf:params:scim:schemas:extension:contoso:1.0:User": {
+                "urn:ietf:params:scim:schemas:extension:expertslivenl26:1.0:User": {
                     "HireDate": "2026-02-24T08:00:00+02:00",
                     "LeaveDate": null,
-                    "countryCode": "DK"
+                    "countryCode": "NL"
                 }
             }
         },
@@ -72,8 +72,8 @@
             "path": "/Users",
             "data": {
                 "active": false,
-                "displayName": "Flow Streaming",
-                "userName": "flow.streaming",
+                "displayName": "Eric Asture",
+                "userName": "Eric.Asture",
                 "externalId": "100",
                 "schemas": [
                     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"

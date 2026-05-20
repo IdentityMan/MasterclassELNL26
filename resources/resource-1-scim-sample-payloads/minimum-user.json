@@ -9,8 +9,8 @@
                 "schemas": [
                     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"],
                 "externalId": "106",                
-                "userName": "holger.danske",
-                "displayName": "Holger Danske",
+                "userName": "Adele.Vance",
+                "displayName": "Adele Vance",
                 "active": false                
             }
         }        
