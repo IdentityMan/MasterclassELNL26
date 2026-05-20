@@ -131,7 +131,17 @@ Paste your Job ID to the URI above and click **Run Query** in Graph Explorer, an
 
 &nbsp;
 
-## Lab 1.8 - (Optional) Create an App Registration for an Inbound Provisioning Application Client
+## Lab 1.8 - Summary & Discussion
+
+To finish the lab, turn to your sideperson and discuss or reflect over the following questions:
+
+1. What happens if you want to create another user, and submits a user payload object that uses the same externalId matching attribute as an existing user?
+2. What happens if you submit a new user SCIM payload with a new unique externalId, but the username is already in use by another user in Entra ID? 
+3. Why isn't the userPrincipalName submitted in the SCIM payload? How is it determined?
+
+&nbsp;
+
+## Advanced Lab 1.9 - (OPTIONAL) Create an App Registration for an Inbound Provisioning Application Client
 
 In this lab you used Graph Explorer for submitting a SCIM payload to the Inbound Provisioning App, using a Delegated user scenario. Other first party applications like Microsoft Graph PowerShell SDK can also be used to send SCIM requests to the bulk upload endpoint.
 
@@ -153,10 +163,32 @@ Using a Client Credential OAuth2 flow, you can now use this Application Client t
 
 &nbsp;
 
-## Lab 1.9 - Summary & Discussion
+## Advanced Lab 1.10 - (OPTIONAL) Send SCIM Payload via Postman
 
-To finish the lab, turn to your sideperson and discuss or reflect over the following questions:
+This lab utilises the above Application Client scenario, and submits a SCIM payload using the Postman client. As this lab is optional, the steps below are provided on a high overview level, and you can use any other preferred REST API client instead of Postman if you like. 
 
-1. What happens if you want to create another user, and submits a user payload object that uses the same externalId matching attribute as an existing user?
-2. What happens if you submit a new user SCIM payload with a new unique externalId, but the username is already in use by another user in Entra ID? 
-3. Why isn't the userPrincipalName submitted in the SCIM payload? How is it determined?
+PS! Make sure not to expose the Client Credentials to third parties via profile settings or synchronizations.
+
+1. In Postman, create an Environment with the following variables (local and sensitive as preferred):
+    1. inbound-provisioning-service-principal-id = "Your Inbound Provisioning App Service Principal as from above"
+    1. inbound-provisioning-job-id = "Your Job ID from Inbound Provisioning App as from above"
+    1. token-endpoint = "https://login.microsoftonline.com/(your-tenant-id)/oauth2/v2.0/token"
+    1. inbound-provisioning-client-id = "(your-client-id-from-app-registration-above)"
+    1. inbound-provisioning-client-secret = "(your-client-secret-from-app-registration-above)"
+2. Create a Collection for your requests
+    1. On the Properties of the Collection, select Authorization and OAuth2 as Auth Type, and add auth data to Request Headers.
+    1. Under Configure a New Token, give it a descriptive name.
+    1. Select Grant Type = Client Credentials
+    1. Access Token URL = {{token-endpoint}}
+    1. Client ID = {{inbound-provisioning-client-id}}
+    1. Client Secret = {{inbound-provisioning-client-secret}}
+    1. Scope = .default
+    1. Client Authentication = Send client credentials in body
+3. Click to **Get a New Access Token**, which if above configured correctly will return an Access Token you can use.
+4. You can now, under the Collection, create Requests that will inherit the Authorization settings from the above Collection. Create the following:
+    1. POST https://graph.microsoft.com/v1.0/servicePrincipals/{{inbound-provisioning-service-principal-id}}/synchronization/jobs/{{inbound-provisioning-job-id}}/bulkUpload
+    1. Set the Content-Type header to application/scim+json
+    1. Try one of the minimum or full SCIM json payloads from above, or create/modify your own.
+    1. Try GET https://graph.microsoft.com/beta/auditLogs/provisioning/?$filter=jobid eq '{{inbound-provisioning-job-id}}', to get the the Provisioning Logs.
+
+&nbsp;
