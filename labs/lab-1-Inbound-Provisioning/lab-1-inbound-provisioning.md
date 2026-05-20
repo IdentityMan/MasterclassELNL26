@@ -11,7 +11,7 @@ In the Microsoft Entra portal, go to Enterprise Apps and click "+ New applicatio
 - API-driven provisioning to Microsoft Entra ID
 - API-driven provisioning to on-premises Active Directory
 
-Click to select "API-driven provisioning to Microsoft Entra ID", give it a descriptive name like "ELDK26 API-driven provisioning to Entra ID" and click Create.
+Click to select "API-driven provisioning to Microsoft Entra ID", give it a descriptive name like "ELNL26 API-driven provisioning to Entra ID" and click Create.
 
 After the application is created, under Manage, click on Provisioning. Notice the different selections under "Get started", but we will start by clicking "+ New configuration" at the top. At the blade for "New provisioning configuration", select Create. After the provisioning configuration has been created, notice the Basic information and make a note of these for later:
 
@@ -51,7 +51,7 @@ Remember to click Save to store your new attribute mappings.
 
 You can even customize the schema beyond the default attributes in the API. This is needed to be able to get employee hire dates and leave dates.
 
-Click on "Show advanced options", and the click "Edit attribute list for API". Here you can add or change the list of API attributes. Scroll down, and there is an empty name box. You can define your own Schema, so lets add the 2 following attributes (add as strings even though they are dates), change yourorgnamehere to your companyname, or use eldk26 or something similar:
+Click on "Show advanced options", and the click "Edit attribute list for API". Here you can add or change the list of API attributes. Scroll down, and there is an empty name box. You can define your own Schema, so lets add the 2 following attributes (add as strings even though they are dates), change yourorgnamehere to your companyname, or use elnl26 or something similar:
 
 - urn:ietf:params:scim:schemas:extension:yourorgnamehere:1.0:User:HireDate
 - urn:ietf:params:scim:schemas:extension:yourorgnamehere:1.0:User:LeaveDate
@@ -131,7 +131,7 @@ Paste your Job ID to the URI above and Run Query in Graph Explorer, and verify t
 
 &nbsp;
 
-## Lab 1.8 - Create an App Registration for an Inbound Provisioning Application Client
+## Lab 1.8 - (Optional) Create an App Registration for an Inbound Provisioning Application Client
 
 In this lab you used Graph Explorer for submitting a SCIM payload to the Inbound Provisioning App, using a Delegated user scenario. Other first party applications like Microsoft Graph PowerShell SDK can also be used to send SCIM requests to the bulk upload endpoint.
 
@@ -153,103 +153,7 @@ Using a Client Credential OAuth2 flow, you can now use this Application Client t
 
 &nbsp;
 
-## Lab 1.9 - Create pre-hire workflow
-
-Now the user has been created let's create a pre-hire workflow in lifecycle workflows and scope the pre-hire workflow to be executed for users with the department 'ELDK 2026' 7 days prior to the employeeHireDate. For this you need to have, at a bear mnimimum, the Lifecycle Workflow Administrator role assigned. Within this workflow make sure the following actions are set:
-
-- Generate TAP and Send Email to manager
-- Assign at least a mailbox license to the end user
-
-Microsoft Learn source: [Lifecycle Workflows - Create](https://learn.microsoft.com/en-us/entra/id-governance/create-lifecycle-workflow)
-
-&nbsp;
-
-## Lab 1.10 - Create new hire workflow
-
-After the pre-hire workflow has been created, create a new-hire workflow which is triggered based on the employeeHireDate and scoped to users with the departmet 'ELDK 2026'. Within this workflow make sure the following tasks are set:
-
-- Enable Account
-- Send Welcome email (feel free to customize on your own)
-- Make the user a member of a security group for ELDK 2026
-- Make the user a member of a MS Teams group for ELDK 2026
-
-Microsoft Learn source:  [Lifecycle Workflows - Create](https://learn.microsoft.com/en-us/entra/id-governance/create-lifecycle-workflow)
-
-&nbsp;
-
-## Lab 1.11 - Create post-onboarding workflow
-
-At last, create a post-onboarding workflow which is scoped to users with the department 'ELDK 2026' 7 days after the employeeHireDate. Within this workflow make sure the following tasks are executed:
-
-- Send onboarding reminder email to manager
-
-Microsoft Learn source:  [Lifecycle Workflows - Create](https://learn.microsoft.com/en-us/entra/id-governance/create-lifecycle-workflow)
-
-&nbsp;
-
-## Lab 1.12 - Run the workflows one-by-one
-
-Make sure that all tasks are exectued successfully.
-
-**NOTE #1:** Be aware that for some tasks the manager need to be configured on the user account and both should have a mailbox assigned.
-
-**NOTE #2:** Be aware that the Temporary Access Pass authentication method should be configured within your tenant to generate the Temporary Access Pass with Lifecycle Workflows.
-
-Microsoft Learn source:  [Lifecycle Workflows - Run on Demand](https://learn.microsoft.com/en-us/entra/id-governance/on-demand-workflow)
-
-&nbsp;
-
-## Lab 1.13 - Onboard the user with their TAP and register for MFA
-
-If you've succesfully completed all the earlier steps in this lab you should be able to onboard the end user account by:
-
-- Retrieving the Temporary Access Pass from the mailbox of the manager
-- Sign-in with the user via a web-browser and enroll for MFA via [My Sign-ins](https://mysignins.microsoft.com/security-info)
-
-&nbsp;
-
-## Lab 1.14 - (OPTIONAL) Send SCIM Payload via Postman
-
-This lab utilises the above Application Client scenario, and submits a SCIM payload using the Postman client. As this lab is optional, the steps below are provided on a high overview level, and you can use any other preferred REST API client instead of Postman if you like. 
-
-PS! Make sure not to expose the Client Credentials to third parties via profile settings or synchronizations.
-
-1. In Postman, create an Environment with the following variables (local and sensitive as preferred):
-    1. inbound-provisioning-service-principal-id = "Your Inbound Provisioning App Service Principal as from above"
-    1. inbound-provisioning-job-id = "Your Job ID from Inbound Provisioning App as from above"
-    1. token-endpoint = "https://login.microsoftonline.com/(your-tenant-id)/oauth2/v2.0/token"
-    1. inbound-provisioning-client-id = "(your-client-id-from-app-registration-above)"
-    1. inbound-provisioning-client-secret = "(your-client-secret-from-app-registration-above)"
-2. Create a Collection for your requests
-    1. On the Properties of the Collection, select Authorization and OAuth2 as Auth Type, and add auth data to Request Headers.
-    1. Under Configure a New Token, give it a descriptive name.
-    1. Select Grant Type = Client Credentials
-    1. Access Token URL = {{token-endpoint}}
-    1. Client ID = {{inbound-provisioning-client-id}}
-    1. Client Secret = {{inbound-provisioning-client-secret}}
-    1. Scope = .default
-    1. Client Authentication = Send client credentials in body
-3. Click to **Get a New Access Token**, which if above configured correctly will return an Access Token you can use.
-4. You can now, under the Collection, create Requests that will inherit the Authorization settings from the above Collection. Create the following:
-    1. POST https://graph.microsoft.com/v1.0/servicePrincipals/{{inbound-provisioning-service-principal-id}}/synchronization/jobs/{{inbound-provisioning-job-id}}/bulkUpload
-    1. Set the Content-Type header to application/scim+json
-    1. Try one of the minimum or full SCIM json payloads from above, or create/modify your own.
-    1. Try GET https://graph.microsoft.com/beta/auditLogs/provisioning/?$filter=jobid eq '{{inbound-provisioning-job-id}}', to get the the Provisioning Logs.
-
-&nbsp;
-
-## Lab 1.15 - (OPTIONAL) Create a custom extension for lifecycle workflows
-
-In some cases you perhaps want to add more advanced scenario's with low code to a lifecycle workflow, for that you can use custom extensions. If you've got time left during the lab you can create a custom extension which can be used within one of the lifecycle workflows created earlier. To do this:
-
-- Create a custom extension within Lifecycle Workflows
-- Configure one of the workflows to run a custom task extension which is created earlier
-
-Microsoft Learn source: [Lifecycle Workflows - Custom Task Extension](https://learn.microsoft.com/en-us/entra/id-governance/lifecycle-workflow-extensibility)
-
-&nbsp;
-
-## Lab 1.16 - Summary & Discussion
+## Lab 1.9 - Summary & Discussion
 
 To finish the lab, turn to your sideperson and discuss or reflect over the following questions.
 
