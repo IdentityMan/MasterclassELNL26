@@ -1,0 +1,56 @@
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:BulkRequest"
+    ],
+    "Operations": [
+        {
+            "method": "POST",
+            "bulkId": "ef5b20ba-2dc3-40c4-ae77-9d8910aea6b4",
+            "path": "/Users",
+            "data": {
+                "schemas": [
+                    "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+                    "urn:ietf:params:scim:schemas:extension:contoso:1.0:User"
+                ],
+                "externalId": "A106",
+                "userName": "Adele.Vance.admin",
+                "displayName": "Adele Vance (Admin)",
+                "active": true,
+                "name": {
+                    "familyName": "Vance (Admin)",
+                    "givenName": "Adele"
+                },
+                "userType": "Privileged Account",
+                "emails": [
+                    {
+                        "primary": true,
+                        "type": "work",
+                        "value": "Adele.Vance+admin@M365x91871532.onmicrosoft.com"
+                    }
+                ],
+                "nickName": "Adele.Vance.admin",
+                "phoneNumbers": [
+                    {
+                        "type": "mobile",
+                        "value": "+31 12345678"
+                    }
+                ],
+                "preferredLanguage": "nl-NL",
+                "timezone": "Amsterdam/Netherlands",
+                "title": "Privileged Admin",
+                "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+                    "costCenter": "ELNL",
+                    "department": "ELNL 2026",
+                    "division": "Experts Live Netherlands 2026",
+                    "organization": "Experts Live"
+                },
+                "urn:ietf:params:scim:schemas:extension:contoso:1.0:User": {
+                    "HireDate": "2026-06-01T08:00:00+02:00",
+                    "LeaveDate": null,
+                    "countryCode": "NL"
+                }
+            }
+        }
+    ],
+    "failOnErrors": null
+}

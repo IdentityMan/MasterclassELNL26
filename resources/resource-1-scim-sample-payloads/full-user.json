@@ -60,7 +60,7 @@
                     }
                 },
                 "urn:ietf:params:scim:schemas:extension:expertslivenl26:1.0:User": {
-                    "HireDate": "2026-02-24T08:00:00+02:00",
+                    "HireDate": "2026-06-01T08:00:00+02:00",
                     "LeaveDate": null,
                     "countryCode": "NL"
                 }
