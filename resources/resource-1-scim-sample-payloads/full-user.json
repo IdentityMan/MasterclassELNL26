@@ -1,0 +1,85 @@
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:BulkRequest"
+    ],
+    "Operations": [
+        {
+            "method": "POST",
+            "bulkId": "3d39e5d4-869a-4fc8-b251-036851f49ca5",
+            "path": "/Users",
+            "data": {
+                "schemas": [
+                    "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+                    "urn:ietf:params:scim:schemas:extension:contoso:1.0:User"
+                ],
+                "externalId": "106",
+                "userName": "Adele.Vance",
+                "displayName": "Adele Vance",
+                "active": false,
+                "name": {
+                    "familyName": "Adele",
+                    "givenName": "Vance"
+                },
+                "userType": "Demo Employee",
+                "addresses": [
+                    {
+                        "country": "NL",
+                        "formatted": "Netherlands",
+                        "locality": "",
+                        "postalCode": "",
+                        "primary": true,
+                        "region": "",
+                        "streetAddress": "",
+                        "type": "work"
+                    }
+                ],
+                "emails": [
+                    {
+                        "primary": true,
+                        "type": "work",
+                        "value": "Adele.Vance@M365x91871532.onmicrosoft.com"
+                    }
+                ],
+                "nickName": "Adele.Vance",
+                "phoneNumbers": [
+                    {
+                        "type": "mobile",
+                        "value": "+31 12345678"
+                    }
+                ],
+                "preferredLanguage": "nl-NL",
+                "timezone": "Amsterdam/Netherlands",
+                "title": "Consultant",
+                "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+                    "costCenter": "ELNL",
+                    "department": "ELNL 2026",
+                    "division": "Experts Live Netherlands 2026",
+                    "organization": "Experts Live",
+                    "manager": {
+                        "value": "100"
+                    }
+                },
+                "urn:ietf:params:scim:schemas:extension:expertslivenl26:1.0:User": {
+                    "HireDate": "2026-06-01T08:00:00+02:00",
+                    "LeaveDate": null,
+                    "countryCode": "NL"
+                }
+            }
+        },
+        {
+            "method": "POST",
+            "bulkId": "3d39e5d4-869a-4fc8-b251-036851f49ca5",
+            "path": "/Users",
+            "data": {
+                "active": false,
+                "displayName": "Eric Asture",
+                "userName": "Eric.Asture",
+                "externalId": "100",
+                "schemas": [
+                    "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+                ]
+            }
+        }
+    ],
+    "failOnErrors": null
+}
