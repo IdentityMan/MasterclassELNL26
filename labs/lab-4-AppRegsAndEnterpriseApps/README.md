@@ -24,12 +24,7 @@ Before starting this lab, ensure your environment meets the following requiremen
 
 **Tenant requirements**
 
-Your tenant must have at least one of the following:
-- Microsoft 365 E3 with Entra ID Premium P2
-- Entra Suite Trial
-- Microsoft 365 E5 Developer Subscription
-
-A standard Entra ID Free tenant is sufficient to complete most steps, but you will not be able to observe some governance-related portal sections.
+A standard Entra ID Free tenant is sufficient to complete all steps.
 
 **Role requirements**
 
@@ -38,7 +33,7 @@ You need one of the following roles in your tenant:
 | Task | Minimum required role |
 |---|---|
 | Create an App Registration | Application Developer or Application Administrator |
-| Grant admin consent | Cloud Application Administrator or Global Administrator |
+| Grant admin consent | Privileged Roles Administrator or Global Administrator |
 | View Enterprise Applications | Cloud Application Administrator (read) |
 
 If you are using your own lab or demo tenant, Global Administrator is recommended for the full experience.
