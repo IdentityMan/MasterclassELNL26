@@ -203,7 +203,7 @@ Navigate to: **https://nextxpert.github.io/entra-demo-app-1/**
 
 The application is a hosted single-page application that uses MSAL.js to authenticate against Microsoft Entra ID.
 
-> **Important:** This is a shared demo application. It has its own App Registration in the presenter's tenant (nextxpert.onmicrosoft.com). When you sign in, you are authenticating *to that App Registration* from *your tenant*. You will observe how the `/common` endpoint enables this cross-tenant authentication. In a later optional exercise you will point the app to your own App Registration instead.
+> **Important:** This is a shared demo application. It has its own App Registration in the presenter's tenant (nxtxprt.onmicrosoft.com). When you sign in, you are authenticating *to that App Registration* from *your tenant*. You will observe how the `/common` endpoint enables this cross-tenant authentication. In a later optional exercise you will point the app to your own App Registration instead.
 
 ### Step 4.2 — Sign in and observe the consent prompt
 
@@ -214,7 +214,7 @@ The application is a hosted single-page application that uses MSAL.js to authent
 
 > **Observe the consent prompt carefully.** It shows:
 > - The name of the application requesting access
-> - The publisher tenant (nextxpert.onmicrosoft.com)
+> - The publisher tenant (nxtxprt.onmicrosoft.com)
 > - The specific permissions being requested
 > - Whether you are consenting on behalf of your organisation or just yourself
 
