@@ -9,7 +9,7 @@ Check the [Lab Instructions](labs/README.md) to prepare for the Identity Master 
 - [Lab 1 - Inbound Provisioning API](labs/lab-1-Inbound-Provisioning/README.md)
 - [Lab 2 - Lifecycle Workflows & Access Packages](labs/lab-2-lcw-and-access-packages/README.md)
 - [Lab 3 - Phishing Office365](labs/lab-3-phishing-office365/README.md)
-- [Lab 4 - App Regs and Enterprise Apps ](labs/AppRegsAndEnterpriseApps/README.md)
+- [Lab 4 - App Regs and Enterprise Apps ](labs/lab-4-AppRegsAndEnterpriseApps/README.md)   
 - [Lab 5 - Maester](labs/lab-5-maester/README.md)
 
 ## Resources
