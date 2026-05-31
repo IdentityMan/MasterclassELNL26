@@ -4,12 +4,12 @@ This repository contains labs, resources and the presentation used for attendees
 
 ## Labs
 
-Check the [Lab Instructions](labs/Readme.md) to prepare for the Identity Master Class at Experts Live Netherlands 2026.
+Check the [Lab Instructions](labs/README.md) to prepare for the Identity Master Class at Experts Live Netherlands 2026.
 
 - [Lab 1 - Inbound Provisioning API](labs/lab-1-Inbound-Provisioning/README.md)
 - [Lab 2 - Lifecycle Workflows & Access Packages](labs/lab-2-lcw-and-access-packages/README.md)
 - [Lab 3 - Phishing Office365](labs/lab-3-phishing-office365/README.md)
-- [Lab 4 - TBA ](labs/lab-4-agent-id/readme.md)
+- [Lab 4 - App Regs and Enterprise Apps ](labs/lab-4-AppRegsAndEnterpriseApps/README.md)   
 - [Lab 5 - Maester](labs/lab-5-maester/README.md)
 
 ## Resources
@@ -18,7 +18,7 @@ Further resources are available in the [resources](resources) folder:
 
 - [SCIM Sample Payloads](resources/resource-1-scim-sample-payloads)
 - [Custom Extension Example](resources/resource-2-custom-extension-example)
-- [Microsoft Graph Permissions](resources/resource-3-msgraph-Permisions)
+- [Microsoft Graph Permissions](resources/resource-3-msgraph-permissions/)
 
 ## Presentation
 
