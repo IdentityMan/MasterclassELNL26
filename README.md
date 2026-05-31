@@ -18,7 +18,7 @@ Further resources are available in the [resources](resources) folder:
 
 - [SCIM Sample Payloads](resources/resource-1-scim-sample-payloads)
 - [Custom Extension Example](resources/resource-2-custom-extension-example)
-- [Microsoft Graph Permissions](resources/resource-3-msgraph-Permisions)
+- [Microsoft Graph Permissions](resources/resource-3-msgraph-permissions/)
 
 ## Presentation
 
