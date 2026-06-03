@@ -22,7 +22,7 @@ Further resources are available in the [resources](resources) folder:
 
 ## Presentation
 
-- ELNL26 - Identity Master Class (will be shared after te masterclass in this repository)
+- [ELNL26 - Identity Master Class Slidedeck](ELNL26%20-%20Identity%20Masterclass.pdf)
 
 ## Contributing and Code of Conduct
 
